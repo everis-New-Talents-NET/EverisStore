@@ -1,5 +1,6 @@
 ﻿using EverisStore.Domain.Models;
 using EverisStore.Domain.Repositories;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EverisStore.Data
 {
-    public class EverisStoreContext : DbContext, IUnitOfWork
+    public class EverisStoreContext : IdentityDbContext, IUnitOfWork
     {
         public EverisStoreContext(DbContextOptions<EverisStoreContext> options)
             : base(options) { }
@@ -17,13 +18,8 @@ namespace EverisStore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
-            //    e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-            //    property.Relational().ColumnType = "varchar(100)";
-
-           // modelBuilder.Ignore<Event>();
-
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(EverisStoreContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
 
         public async Task<bool> Commit()
