@@ -4,14 +4,16 @@ using EverisStore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EverisStore.Data.Migrations
 {
     [DbContext(typeof(EverisStoreContext))]
-    partial class EverisStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210730021147_Versao 01.00")]
+    partial class Versao0100
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

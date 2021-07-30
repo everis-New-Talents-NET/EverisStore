@@ -1,41 +1,43 @@
-﻿using EverisStore.Application.ViewModels;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AutoMapper;
+using EverisStore.Application.ViewModels;
+using EverisStore.Domain.Models;
+using EverisStore.Domain.Repositories;
+using EverisStore.Infraestrutura;
 using System.Threading.Tasks;
 
 namespace EverisStore.Application.Services
 {
     public class AutenticacaoService : IAutenticacaoService
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        
+        private readonly IUsuarioRepository _usuarioRepositorio;
+        private readonly IMapper _mapper;
 
-        public AutenticacaoService(SignInManager<IdentityUser> signInManager,
-                                   UserManager<IdentityUser> userManager)
+        public AutenticacaoService(IUsuarioRepository usuarioRepository,
+                                   IMapper mapper)
         {
-            _signInManager = signInManager;
-            _userManager = userManager;
+            _usuarioRepositorio = usuarioRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<string>> RegistrarUsuario(RegistrarUsuarioViewModel registrarUsuario)
+        public async Task<string> Autenticar(AutenticarUsuarioViewModel autenticar)
         {
-            var usuario = new IdentityUser
-            {
-                UserName = registrarUsuario.Email,
-                Email = registrarUsuario.Email,
-                EmailConfirmed = true
-            };
+            var usuario = await _usuarioRepositorio.Consultar(autenticar.Email, autenticar.Senha);
 
-            var resultado = await _userManager.CreateAsync(usuario, registrarUsuario.Senha);
+            if (usuario == null)
+                return "";
 
-            if (!resultado.Succeeded)
-                return resultado.Errors.Select(e => e.Description);
+           return TokenGenerator.Gerar(usuario);
 
-            await _signInManager.SignInAsync(usuario, false);
+        }
 
-            return Enumerable.Empty<string>();
+        public async Task<bool> RegistrarUsuario(RegistrarUsuarioViewModel registrarUsuario)
+        {
+            var usuario = _mapper.Map<Usuario>(registrarUsuario);
+
+            _usuarioRepositorio.Cadastrar(usuario);
+
+            return await _usuarioRepositorio.UnitOfWork.Commit();
         }
     }
 }
