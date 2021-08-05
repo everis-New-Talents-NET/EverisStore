@@ -2,7 +2,6 @@
 using EverisStore.Application.ViewModels;
 using EverisStore.Domain.DomainObjects;
 using EverisStore.Domain.Models;
-using EverisStore.Domain.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -11,21 +10,20 @@ namespace EverisStore.Application.Services
 {
     public class ProdutoService : IProdutoService
     {
-        private readonly IProdutoRepository _produtoRepository;
+     
         private readonly IEstoqueService _estoqueService;
         private readonly IMapper _mapper;
 
-        public ProdutoService(IProdutoRepository produtoRepository,
-                                 IMapper mapper,
+        public ProdutoService(IMapper mapper,
                                  IEstoqueService estoqueService)
         {
-            _produtoRepository = produtoRepository;
             _mapper = mapper;
             _estoqueService = estoqueService;
         }
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterPorCategoria(int codigo)
         {
+            var produto 
             return _mapper.Map<IEnumerable<ProdutoViewModel>>(await _produtoRepository.ObterPorCategoria(codigo));
         }
 

@@ -3,7 +3,7 @@ using System;
 
 namespace EverisStore.Domain.Models
 {
-    public class Produto : Entity, IAggregateRoot
+    public class Produto : Entity
     {
         public Guid CategoriaId { get; private set; }
         public string Nome { get; private set; }

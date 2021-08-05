@@ -3,7 +3,7 @@ using System;
 
 namespace EverisStore.Domain.Models
 {
-    public class Usuario : Entity, IAggregateRoot
+    public class Usuario : Entity
     {
         public string Nome { get; private set; }
         public string Email { get; private set; }
