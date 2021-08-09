@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -19,8 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EverisStore.Application\EverisStore.Application.csproj" />
-    <ProjectReference Include="..\EverisStore.Data\EverisStore.Data.csproj" />
     <ProjectReference Include="..\EverisStore.Domain\EverisStore.Domain.csproj" />
   </ItemGroup>
 
