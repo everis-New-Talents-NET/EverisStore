@@ -19,8 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EverisStore.Application\EverisStore.Application.csproj" />
-    <ProjectReference Include="..\EverisStore.Data\EverisStore.Data.csproj" />
     <ProjectReference Include="..\EverisStore.Domain\EverisStore.Domain.csproj" />
   </ItemGroup>
 
