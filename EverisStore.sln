@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EverisStore.Domain", "EverisStore.Domain\EverisStore.Domain.csproj", "{A3205630-6366-4619-9DF4-1C441CF5CA9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.Api", "EverisStore.Api\EverisStore.Api.csproj", "{84F4DFAA-CDAC-4012-8C36-528A8896393A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.API", "EverisStore.API\EverisStore.API.csproj", "{7F301BEF-A2A9-4755-B390-77714589E3D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A3205630-6366-4619-9DF4-1C441CF5CA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3205630-6366-4619-9DF4-1C441CF5CA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3205630-6366-4619-9DF4-1C441CF5CA9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84F4DFAA-CDAC-4012-8C36-528A8896393A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84F4DFAA-CDAC-4012-8C36-528A8896393A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84F4DFAA-CDAC-4012-8C36-528A8896393A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84F4DFAA-CDAC-4012-8C36-528A8896393A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F301BEF-A2A9-4755-B390-77714589E3D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F301BEF-A2A9-4755-B390-77714589E3D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F301BEF-A2A9-4755-B390-77714589E3D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F301BEF-A2A9-4755-B390-77714589E3D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,5 @@ namespace EverisStore.Domain.Models
     {
         public string Descricao { get; set; }
         public string Regra { get; set; }
-        public ICollection<Usuario> Usuarios { get; set; }
     }
 }
