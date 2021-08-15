@@ -5,17 +5,18 @@ namespace EverisStore.Domain.Models
 {
     public class Produto : Entity
     {
-        public Guid CategoriaId { get; private set; }
-        public string Nome { get; private set; }
-        public string Descricao { get; private set; }
-        public bool Ativo { get; private set; }
-        public decimal Valor { get; private set; }
-        public DateTime DataCadastro { get; private set; }
-        public int QuantidadeEstoque { get; private set; }
-        public Dimensoes Dimensoes { get; private set; }
-        public Categoria Categoria { get; private set; }
+        public Guid CategoriaId { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public bool Ativo { get; set; }
+        public decimal Valor { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public int QuantidadeEstoque { get; set; }
+        public Dimensoes Dimensoes { get; set; }
+        public Categoria Categoria { get; set; }
 
-        protected Produto() { }
+        public Produto() {}
+        
         public Produto(string nome, string descricao, bool ativo, decimal valor, Guid categoriaId, DateTime dataCadastro, string imagem, Dimensoes dimensoes)
         {
             CategoriaId = categoriaId;

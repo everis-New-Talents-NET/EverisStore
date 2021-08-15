@@ -2,7 +2,7 @@
 
 namespace EverisStore.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class BaseController : ControllerBase
     {
        

@@ -37,10 +37,15 @@ namespace EverisStore.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
+            { 
+                app.UseExceptionHandler("/error");
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EverisStore.API v1"));
+                
+
+            }else
+            {
+                app.UseExceptionHandler("/error");
             }
 
             app.UseHttpsRedirection();
