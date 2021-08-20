@@ -8,7 +8,7 @@ namespace EverisStore.Domain.Models
         public string Nome { get; private set; }
         public int Codigo { get; private set; }
 
-        protected Categoria() { }
+        public Categoria() { }
 
         public Categoria(string nome, int codigo)
         {
