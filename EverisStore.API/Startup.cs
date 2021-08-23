@@ -103,7 +103,39 @@ namespace EverisStore.API
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo {Title = "EverisStore.API", Version = "v1"});
+                // add JWT Authentication
+                /*var securityScheme = new OpenApiSecurityScheme
+                {
+                    Name = "JWT Authentication",
+                    Description = "Enter JWT Bearer token **_only_**",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer", // must be lower case
+                    BearerFormat = "JWT",
+                    Reference = new OpenApiReference
+                    {
+                        Id = JwtBearerDefaults.AuthenticationScheme,
+                        Type = ReferenceType.SecurityScheme
+                    }
+                };*/
+                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {securityScheme, new string[] { }}
+                });
+                // c.SwaggerDoc("v1", new OpenApiInfo {Title = "EverisStore.API", Version = "v1"});
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "EverisStore.API",
+                    Version = "v1",
+                    Description = "An API",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "EverisStore",
+                        Email = string.Empty,
+                        Url = new Uri("https://EverisStore.com/"),
+                    },
+                });
             });
         }
 
