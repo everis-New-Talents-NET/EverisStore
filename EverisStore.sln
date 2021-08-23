@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.API", "..\..\EverisStore\EverisStore.API\EverisStore.API.csproj", "{FDAB1160-D530-416F-9BDD-303EB157D0D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.API", "EverisStore.API\EverisStore.API.csproj", "{FDAB1160-D530-416F-9BDD-303EB157D0D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.Domain", "..\..\EverisStore\EverisStore.Domain\EverisStore.Domain.csproj", "{8BC94047-6D47-4600-90E7-257483C79E4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EverisStore.Domain", "EverisStore.Domain\EverisStore.Domain.csproj", "{8BC94047-6D47-4600-90E7-257483C79E4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
