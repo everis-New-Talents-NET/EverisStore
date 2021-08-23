@@ -1,0 +1,139 @@
+{
+  "format": 1,
+  "restore": {
+    "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.API/EverisStore.API.csproj": {}
+  },
+  "projects": {
+    "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.API/EverisStore.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.API/EverisStore.API.csproj",
+        "projectName": "EverisStore.API",
+        "projectPath": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.API/EverisStore.API.csproj",
+        "packagesPath": "/home/webdevelop/.nuget/packages/",
+        "outputPath": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.API/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/webdevelop/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/EverisStore.Domain.csproj": {
+                "projectPath": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/EverisStore.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/EverisStore.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/EverisStore.Domain.csproj",
+        "projectName": "EverisStore.Domain",
+        "projectPath": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/EverisStore.Domain.csproj",
+        "packagesPath": "/home/webdevelop/.nuget/packages/",
+        "outputPath": "/var/www/html/me/clients/everis/trainning/DIO/csharp/test/EverisStore/EverisStore.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/webdevelop/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Bogus": {
+              "target": "Package",
+              "version": "[33.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
