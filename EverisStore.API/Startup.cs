@@ -28,6 +28,9 @@ namespace EverisStore.API
         {
 
             services.AddControllers();
+
+            services.AddAutentication()
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EverisStore.API", Version = "v1" });

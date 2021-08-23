@@ -21,5 +21,13 @@ namespace EverisStore.Domain.Models
             Senha = senha;
             Perfil = perfil;
         }
+
+    }
+
+    public class UsuarioParams {
+        public string Nome { get; set; }
+        public string Senha { get; set; }
+
+
     }
 }
