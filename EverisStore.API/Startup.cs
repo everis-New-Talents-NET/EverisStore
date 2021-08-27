@@ -29,6 +29,7 @@ namespace EverisStore.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
 
             /* //Multiple Autenthication
@@ -71,19 +72,28 @@ namespace EverisStore.API
             //https://docs.microsoft.com/pt-br/aspnet/core/security/authorization/limitingidentitybyscheme?view=aspnetcore-5.0
             //https://docs.microsoft.com/pt-br/aspnet/core/security/authentication/?view=aspnetcore-5.0
             //https://sandrino.dev/blog/aspnet-core-5-jwt-authorization
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+
+            var key = Encoding.UTF8.GetBytes(Configuration["SecurityKey"]);
+            
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
                 .AddJwtBearer(options =>
                 {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        // ValidateLifetime = false,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "everistore.com.br",
-                        ValidAudience = "everistore",
+                        // ValidIssuer = "everisstore.com.br",
+                        // ValidAudience = "everisstore",
                         IssuerSigningKey =
-                            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecurityKey"]))
+                            new SymmetricSecurityKey(key)
                     };
 
                     options.Events = new JwtBearerEvents
@@ -118,11 +128,11 @@ namespace EverisStore.API
                         Type = ReferenceType.SecurityScheme
                     }
                 };*/
-                c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+                /*c.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {securityScheme, new string[] { }}
-                });
+                });*/
                 // c.SwaggerDoc("v1", new OpenApiInfo {Title = "EverisStore.API", Version = "v1"});
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
@@ -150,8 +160,14 @@ namespace EverisStore.API
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+            );
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 //registrar o modelo de autenticação no middleware
             // app.Use(next =>
@@ -183,8 +199,8 @@ namespace EverisStore.API
             //     };
             // });
 
-            app.UseAuthorization();
-            app.UseAuthentication();
+            
+           
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }

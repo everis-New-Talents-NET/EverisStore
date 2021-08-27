@@ -17,52 +17,45 @@ namespace EverisStore.API.Controllers
     public class TokenController : BaseController
     {
         private readonly IConfiguration _config;
+
         public TokenController(IConfiguration config)
         {
             _config = config;
-
         }
 
         [AllowAnonymous]
-        [HttpPost("login-sistema")]
-        public IActionResult ResquestToken([FromQuery] UsuarioParams request)
+        [HttpPost("obter-token")]
+        public IActionResult ResquestToken([FromBody] UsuarioParams request)
         {
-             if (request.Nome == "everis" && request.Senha == "dio")
-             {
-                 var claims = new []
-                 {
-                     new Claim(ClaimTypes.Name, request.Nome),
-                    //  new Claims(ClaimTypes.Role, "admin")
-                 };
-
+            if (request.Nome == "everis" && request.Senha == "dio")
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
                 //código para armazenar a criptografia usada na criação do token
-                 var key = new SymmetricSecurityKey(
-                     Encoding.UTF8.GetBytes(_config["SecurityKey"])
-                 );
+                var key = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(_config["SecurityKey"])
+                );
+                
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim(ClaimTypes.Name, request.Nome),
+                        //  new Claims(ClaimTypes.Role, "admin")
+                    }),
+                    Expires = DateTime.UtcNow.AddHours(2),
+                    SigningCredentials = new SigningCredentials(key, 
+                            SecurityAlgorithms.HmacSha256Signature)
+                };
 
-                //recebe
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+              var token =  tokenHandler.CreateToken(tokenDescriptor);
+                return Ok(tokenHandler.WriteToken(token));
+            }
 
-                 var token = new JwtSecurityToken(
-                     issuer: "everistore.com.br",
-                     audience: "everistore",
-                     claims: claims,
-                     expires: DateTime.Now.AddMinutes(2),
-                     signingCredentials: creds
-                 );
-
-                  return Ok( new {
-                token = new JwtSecurityTokenHandler().WriteToken(token)
-            });
-
-             }
-
-             return NotFound();
-
-
-
+            return NotFound();
         }
 
-
+        
+        [HttpPost("obter-usuario-autenticado")]
+        public string Authenticated() => $"Autenticado - {User.Identity.Name}";
     }
 }
