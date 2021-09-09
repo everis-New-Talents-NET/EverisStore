@@ -82,18 +82,19 @@ namespace EverisStore.API
                 })
                 .AddJwtBearer(options =>
                 {
-                    options.RequireHttpsMetadata = false;
-                    options.SaveToken = true;
+                    
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                        // ValidateLifetime = false,
+                        
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = false,
                         ValidateIssuerSigningKey = true,
-                        // ValidIssuer = "everisstore.com.br",
-                        // ValidAudience = "everisstore",
+                        ValidIssuer = "everisstore.com.br",
+                        ValidAudience = "everisstore",
                         IssuerSigningKey =
-                            new SymmetricSecurityKey(key)
+                            new SymmetricSecurityKey(key),
+                        RequireExpirationTime = true
                     };
 
                     options.Events = new JwtBearerEvents

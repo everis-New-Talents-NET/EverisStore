@@ -25,7 +25,7 @@ namespace EverisStore.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("obter-token")]
-        public IActionResult ResquestToken([FromBody] UsuarioParams request)
+        public IActionResult RequestToken([FromBody] UsuarioParams request)
         {
             if (request.Nome == "everis" && request.Senha == "dio")
             {
@@ -34,7 +34,7 @@ namespace EverisStore.API.Controllers
                 var key = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(_config["SecurityKey"])
                 );
-                
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
@@ -42,9 +42,13 @@ namespace EverisStore.API.Controllers
                         new Claim(ClaimTypes.Name, request.Nome),
                         //  new Claims(ClaimTypes.Role, "admin")
                     }),
-                    Expires = DateTime.UtcNow.AddHours(2),
-                    SigningCredentials = new SigningCredentials(key, 
-                            SecurityAlgorithms.HmacSha256Signature)
+
+                    SigningCredentials = new SigningCredentials(key,
+                            SecurityAlgorithms.HmacSha256Signature),
+                    Issuer = "everisstore.com.br",
+                    Audience = "everisstore",
+                    Expires = DateTime.UtcNow.AddSeconds(20),
+
                 };
 
               var token =  tokenHandler.CreateToken(tokenDescriptor);
@@ -54,7 +58,7 @@ namespace EverisStore.API.Controllers
             return NotFound();
         }
 
-        
+
         [HttpPost("obter-usuario-autenticado")]
         public string Authenticated() => $"Autenticado - {User.Identity.Name}";
     }
